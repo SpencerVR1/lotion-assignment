@@ -1,16 +1,167 @@
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-li,
-p {
+body {
   margin: 0;
-  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
-a {
-  color: inherit;
-  text-decoration: none;
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+.header {
+  display: flex;
+  flex-direction: row;
+  border-bottom: solid #eeeeee;
+}
+.header-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 24;
+}
+#lotion {
+  margin: 0;
+  padding-top: 10px;
+}
+.title-caption {
+  margin: 0;
+  padding: 10px;
+  color: grey;
+  font-weight: bold;
+  font-size: 0.5em;
+}
+.header-button {
+  display: flex;
+  flex: 1;
+}
+.buttons {
+  background: white;
+  border: none;
+  
+}
+.buttons:hover {
+  background: rgb(98, 74, 126);
+  color: white;
+}
+#hamburger-menu {
+  font-weight: bold;
+  padding: 15px;
+  font-size: 1.3em;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-right: solid #eeeeee;
+}
+.left-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: solid #eeeeee;
+}
+#notes {
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+#add-note {
+  padding-right: 15px;
+  padding-left: 15px;
+  font-size: 1.3em;
+}
+.left-bottom {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.left-bottom-savednote {
+  border-bottom: solid #eeeeee;
+}
+.saved-note-title {
+  margin: 0;
+  padding: 8px;
+  padding-bottom: 0;
+}
+.saved-note-date {
+  margin: 0;
+  padding-left: 8px;
+  color: grey;
+  font-size: 0.5em;
+}
+.saved-note-body {
+  margin: 0;
+  padding: 8px;
+  font-size: 0.6em;
+}
+.left-bottom-savednote:hover {
+  background: rgb(98, 74, 126);
+  color: white;
+}
+
+
+.right {
+  display: flex;
+  flex-direction: column;
+  flex: 4;
+}
+.right-div {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+.default-select-create-text {
+  color: grey;
+  
+}
+.right-header {
+  display: flex;
+  flex-direction: row;
+  border-bottom: solid #eeeeee;
+}
+.right-header-title {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+.right-title-text {
+  margin: 0;
+}
+.right-header-buttons {
+  display: flex;
+  background: white;
+  border: none;
+}
+#note-title {
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+#note-body {
+  font-size: small;
+  padding-left: 10px;
+}
+#note-date {
+  color: grey;
+  font-size: 0.5em;
+  padding-left: 10px;;
+}
+.text-editor {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.quill-title {
+  max-height: 2em;
+}
+.react-quill {
+   height: 500px;
+}
+

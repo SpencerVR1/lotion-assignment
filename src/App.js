@@ -1,12 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import { BrowserRouter, Routes, Route, Outlet, useNavigate, useParams} from "react-router-dom";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css';
-
-
 import { v4 as uuidv4 } from 'uuid';
-import { useOutletContext } from "react-router-dom";
 
 function App() {
 
@@ -45,16 +42,20 @@ function Layout(props) {
 
   const navigate = useNavigate();
 
+  const navigateRef = useRef();
+  navigateRef.current = navigate;
 
+  const notesRef = useRef();
+  notesRef.current = props.notes;
   useEffect( () => {
     
-    const index = props.notes.findIndex(note => note.id === props.currentID);
+    const index = notesRef.current.findIndex(note => note.id === props.currentID);
    
     if (index >= 0) {
-      if (props.notes[0].title === "Untitled" && props.notes[0].body === "...") {
-        navigate(`/${index + 1}/edit`);
+      if (notesRef.current[0].title === "Untitled" && notesRef.current[0].body === "...") {
+        navigateRef.current(`/${index + 1}/edit`);
     } else {
-      navigate(`/${index + 1}`);
+      navigateRef.current(`/${index + 1}`);
     }
     }
   }, [props.currentID]);
@@ -157,7 +158,7 @@ function NoEdit(props) {
         navigate(`/`);
 
       }
-      const newNotes = props.notes.filter( (note) => note.id != props.currentID);
+      const newNotes = props.notes.filter( (note) => note.id !== props.currentID);
       props.setNotes(newNotes);
 
       if (newNotes.length > 0) {
@@ -225,7 +226,7 @@ function Edit(props) {
         navigate(`/`);
 
       }
-      const newNotes = props.notes.filter( (note) => note.id != props.currentID);
+      const newNotes = props.notes.filter( (note) => note.id !== props.currentID);
       props.setNotes(newNotes);
 
       if (newNotes.length > 0) {
@@ -248,7 +249,7 @@ function Edit(props) {
     } else {
       setProperBody(body.slice(3, body.length - 4));
     }
-  });
+  }, [title, body]);
   
 
   const navigate = useNavigate();
